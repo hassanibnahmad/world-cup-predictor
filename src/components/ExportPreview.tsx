@@ -4,6 +4,12 @@ interface ExportPreviewProps {
   groups: Group[];
 }
 
+const getFlagsApiUrl = (countryCode: string) =>
+  `https://flagsapi.com/${countryCode}/flat/64.png`;
+
+const getExportFlagUrl = (countryCode: string) =>
+  `https://flagcdn.com/w40/${countryCode.toLowerCase()}.png`;
+
 const ExportPreview = ({ groups }: ExportPreviewProps) => (
   <div
     id="export-target"
@@ -122,7 +128,20 @@ const ExportPreview = ({ groups }: ExportPreviewProps) => (
               >
                 {i + 1}
               </span>
-              <span style={{ fontSize: "22px" }}>{team.flag}</span>
+              <img
+                src={getFlagsApiUrl(team.countryCode)}
+                alt={`${team.name} flag`}
+                onError={(event) => {
+                  event.currentTarget.src = getExportFlagUrl(team.countryCode);
+                }}
+                style={{
+                  width: "32px",
+                  height: "22px",
+                  objectFit: "cover",
+                  borderRadius: "3px",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                }}
+              />
               <span style={{ fontSize: "14px", fontWeight: "500" }}>{team.name}</span>
             </div>
           ))}

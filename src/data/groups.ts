@@ -1,7 +1,7 @@
 export interface Team {
   id: string;
   name: string;
-  flag: string;
+  countryCode: string;
 }
 
 export interface Group {
@@ -40,12 +40,27 @@ const groupsRaw = [
   { letter: "L", teams: ["England", "Croatia", "Ghana", "Panama"] },
 ];
 
+const teamCountryCodes: Record<string, string> = {
+  "Mexico": "MX", "South Korea": "KR", "South Africa": "ZA", "Czech Republic": "CZ",
+  "Canada": "CA", "Switzerland": "CH", "Qatar": "QA", "Bosnia": "BA",
+  "Brazil": "BR", "Morocco": "MA", "Haiti": "HT", "Scotland": "GB",
+  "USA": "US", "Paraguay": "PY", "Australia": "AU", "Turkey": "TR",
+  "Germany": "DE", "Curaçao": "CW", "Ivory Coast": "CI", "Ecuador": "EC",
+  "Netherlands": "NL", "Japan": "JP", "Sweden": "SE", "Tunisia": "TN",
+  "Belgium": "BE", "Egypt": "EG", "Iran": "IR", "New Zealand": "NZ",
+  "Spain": "ES", "Uruguay": "UY", "Saudi Arabia": "SA", "Cape Verde": "CV",
+  "France": "FR", "Senegal": "SN", "Norway": "NO", "Iraq": "IQ",
+  "Argentina": "AR", "Algeria": "DZ", "Austria": "AT", "Jordan": "JO",
+  "Portugal": "PT", "Colombia": "CO", "Uzbekistan": "UZ", "DR Congo": "CD",
+  "England": "GB", "Croatia": "HR", "Ghana": "GH", "Panama": "PA",
+};
+
 export const initialGroups: Group[] = groupsRaw.map((g) => ({
   name: `Group ${g.letter}`,
   letter: g.letter,
   teams: g.teams.map((name) => ({
     id: `${g.letter}-${name}`,
     name,
-    flag: flagEmoji[name] || "🏳️",
+    countryCode: teamCountryCodes[name] || "UN",
   })),
 }));

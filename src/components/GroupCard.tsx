@@ -1,16 +1,3 @@
-import {
-  DndContext,
-  closestCenter,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  type DragEndEvent,
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-  arrayMove,
-} from "@dnd-kit/sortable";
 import type { Group, Team } from "@/data/groups";
 import SortableTeam from "./SortableTeam";
 
@@ -21,16 +8,14 @@ interface GroupCardProps {
 }
 
 const GroupCard = ({ group, onReorder, index }: GroupCardProps) => {
-  const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
-  );
+  const setTeamPosition = (teamId: string, targetIndex: number) => {
+    const oldIndex = group.teams.findIndex((team) => team.id === teamId);
+    if (oldIndex === -1 || oldIndex === targetIndex) return;
 
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (!over || active.id === over.id) return;
-    const oldIndex = group.teams.findIndex((t) => t.id === active.id);
-    const newIndex = group.teams.findIndex((t) => t.id === over.id);
-    onReorder(group.letter, arrayMove(group.teams, oldIndex, newIndex));
+    const nextTeams = [...group.teams];
+    const [team] = nextTeams.splice(oldIndex, 1);
+    nextTeams.splice(targetIndex, 0, team);
+    onReorder(group.letter, nextTeams);
   };
 
   return (
@@ -40,19 +25,24 @@ const GroupCard = ({ group, onReorder, index }: GroupCardProps) => {
     >
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-bold text-base gradient-text">{group.name}</h3>
-        <span className="text-xs text-muted-foreground px-2 py-0.5 rounded-full bg-muted/50">
-          {group.letter}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground px-2 py-0.5 rounded-full bg-muted/50">
+            {group.letter}
+          </span>
+          
+        </div>
       </div>
-      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-        <SortableContext items={group.teams.map((t) => t.id)} strategy={verticalListSortingStrategy}>
-          <div className="flex flex-col gap-2">
-            {group.teams.map((team, i) => (
-              <SortableTeam key={team.id} team={team} position={i} />
-            ))}
-          </div>
-        </SortableContext>
-      </DndContext>
+      <div className="flex flex-col gap-2">
+        {group.teams.map((team, i) => (
+          <SortableTeam
+            key={team.id}
+            team={team}
+            position={i}
+            totalTeams={group.teams.length}
+            onSetPosition={(targetIndex) => setTeamPosition(team.id, targetIndex)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
