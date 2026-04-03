@@ -9,6 +9,33 @@ import ExportPreview from "@/components/ExportPreview";
 import { initialGroups, type Group, type Team } from "@/data/groups";
 import { toast } from "@/hooks/use-toast";
 
+const waitForImages = async (container: HTMLElement, timeoutMs = 3000) => {
+  const images = Array.from(container.querySelectorAll("img"));
+  if (!images.length) return;
+
+  await Promise.race([
+    Promise.all(
+      images.map(
+        (img) =>
+          new Promise<void>((resolve) => {
+            if (img.complete && img.naturalWidth > 0) {
+              resolve();
+              return;
+            }
+            const done = () => {
+              img.removeEventListener("load", done);
+              img.removeEventListener("error", done);
+              resolve();
+            };
+            img.addEventListener("load", done);
+            img.addEventListener("error", done);
+          })
+      )
+    ),
+    new Promise<void>((resolve) => setTimeout(resolve, timeoutMs)),
+  ]);
+};
+
 const Index = () => {
   const [groups, setGroups] = useState<Group[]>(initialGroups);
   const [showGroups, setShowGroups] = useState(false);
@@ -46,6 +73,8 @@ const Index = () => {
       target.style.position = "fixed";
       target.style.top = "0";
       target.style.zIndex = "-1";
+
+      await waitForImages(target);
 
       const canvas = await html2canvas(target, {
         width: 1080,

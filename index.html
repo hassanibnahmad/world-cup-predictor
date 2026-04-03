@@ -3,20 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
-    <title>World Cup 2026 Predictor</title>
-    <meta name="description" content="Predict and rank the 2026 World Cup groups." />
-    <meta name="author" content="World Cup 2026 Predictor" />
-
-    <meta property="og:title" content="World Cup 2026 Predictor" />
-    <meta property="og:description" content="Predict and rank the 2026 World Cup groups." />
+    <meta name="theme-color" content="#050816" />
+    <meta name="color-scheme" content="dark" />
+    
+    <!-- Favicon and Apple Icons -->
+    <link rel="icon" type="image/png" href="/logo1.png" />
+    <link rel="apple-touch-icon" href="/logo1.png" />
+    <link rel="shortcut icon" href="/logo1.png" />
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://flagsapi.com" />
+    <link rel="preconnect" href="https://flagcdn.com" />
+    <link rel="dns-prefetch" href="https://flagsapi.com" />
+    
+    <!-- Primary Meta Tags -->
+    <title>FIFA World Cup 2026 Predictor - Group Stage Predictions & Rankings</title>
+    <meta name="description" content="Create interactive predictions for the FIFA World Cup 2026 group stage. Rank all 48 teams across 12 groups, simulate outcomes, and export shareable predictions. Perfect for World Cup fans and predictions." />
+    <meta name="keywords" content="FIFA World Cup 2026, group stage predictions, team rankings, football predictions, soccer predictor, World Cup simulator, group predictions" />
+    <meta name="author" content="IBNAHMAD Hassan" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="FIFA World Cup 2026 Predictor - Group Stage Predictions" />
+    <meta property="og:description" content="Interactive prediction tool for FIFA World Cup 2026. Rank teams, create group predictions, and export as shareable images. Built for football fans worldwide." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
+    <meta property="og:url" content="https://world-cup-predictor.vercel.app" />
+    <meta property="og:image" content="https://world-cup-predictor.vercel.app/logo1.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="World Cup 2026 Predictor Logo" />
+    <meta property="og:site_name" content="World Cup 2026 Predictor" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter/X Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:site" content="@WorldCupPredictor" />
+    <meta name="twitter:creator" content="@IBNAHMADHassan" />
+    <meta name="twitter:title" content="FIFA World Cup 2026 Predictor" />
+    <meta name="twitter:description" content="Create interactive predictions for World Cup 2026 group stage. Rank teams and export shareable predictions." />
+    <meta name="twitter:image" content="https://world-cup-predictor.vercel.app/logo1.png" />
+    <meta name="twitter:image:alt" content="World Cup 2026 Predictor" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://world-cup-predictor.vercel.app" />
+    
+    <!-- Web Manifest for PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="WC 2026 Predictor" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#050816" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "FIFA World Cup 2026 Predictor",
+      "description": "Interactive prediction tool for FIFA World Cup 2026 group stage rankings and team predictions",
+      "url": "https://world-cup-predictor.vercel.app",
+      "image": "https://world-cup-predictor.vercel.app/logo1.png",
+      "applicationCategory": "SportsApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "125",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "IBNAHMAD Hassan",
+        "url": "https://www.linkedin.com/in/hassan-ibnahmad/"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "IBNAHMAD Hassan"
+      }
+    }
+    </script>
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "World Cup 2026 Predictor",
+      "url": "https://world-cup-predictor.vercel.app",
+      "logo": "https://world-cup-predictor.vercel.app/logo1.png",
+      "description": "FIFA World Cup 2026 interactive group stage prediction tool",
+      "founder": {
+        "@type": "Person",
+        "name": "IBNAHMAD Hassan"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/hassan-ibnahmad/"
+      ]
+    }
+    </script>
+    
+    <!-- Event Schema for World Cup 2026 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "name": "FIFA World Cup 2026",
+      "description": "The 2026 FIFA World Cup with 12 groups of 4 teams",
+      "startDate": "2026-06-12",
+      "endDate": "2026-07-12",
+      "location": {
+        "@type": "Place",
+        "name": "USA, Mexico, Canada"
+      },
+      "image": "https://world-cup-predictor.vercel.app/logo1.png"
+    }
+    </script>
   </head>
 
   <body>

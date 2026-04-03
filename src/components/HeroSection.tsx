@@ -20,7 +20,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => (
         <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-2 shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-xl md:rounded-[2.5rem] md:p-4">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.08),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_42%)]" />
           <img
-            src="/logo.png"
+            src="/logo1.png"
             alt="FIFA World Cup 2026 visual"
             className="relative z-10 mx-auto max-h-[42vh] w-full select-none object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)] md:max-h-[56vh]"
             draggable="false"
@@ -35,10 +35,17 @@ const HeroSection = ({ onStart }: HeroSectionProps) => (
         </div>
 
         <h2 className="font-display text-4xl font-black leading-[0.94] tracking-tight text-white md:text-5xl xl:text-6xl">
-          One board. One screen. <br className="hidden md:block" /> All your group predictions.
+          The FIFA World Cup 2026 </h2><p>introduces a new format with 12 groups of 4 teams.
+          Use our interactive predictor tool to create your own group rankings, simulate outcomes,
+          and export your predictions as a shareable image.
+        </p>
+
+        <h2 className="font-display text-2xl font-black tracking-tight text-white md:text-3xl">
+          How It Works
         </h2>
+
         <p className="mx-auto max-w-2xl text-base leading-7 text-slate-300 lg:mx-0 md:text-lg">
-          Click teams into order, lock your qualifiers, and export a poster-style prediction sheet in seconds.
+          Click the rank buttons beside each team to arrange every group from 1st to 4th.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
@@ -49,10 +56,12 @@ const HeroSection = ({ onStart }: HeroSectionProps) => (
             Start Predicting
           </Button>
           
+          
         </div>
       </div>
     </div>
   </section>
+  
 );
 
 export default HeroSection;

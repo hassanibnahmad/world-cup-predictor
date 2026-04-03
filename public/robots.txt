@@ -1,13 +1,30 @@
+# Robots.txt for World Cup 2026 Predictor
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://world-cup-predictor.vercel.app/sitemap.xml
+
+# Specific search engine directives
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
+Allow: /
 Allow: /
 
 User-agent: *

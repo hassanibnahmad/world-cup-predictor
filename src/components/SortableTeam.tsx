@@ -12,6 +12,7 @@ const SortableTeam = ({ team, position, totalTeams, onSetPosition }: SortableTea
   const isQualified = position <= 1;
   const isThird = position === 2;
   const rankOptions = Array.from({ length: totalTeams }, (_, index) => index);
+  const localFlagUrl = `/flags/${team.countryCode.toLowerCase()}.png`;
   const flagsApiUrl = `https://flagsapi.com/${team.countryCode}/flat/64.png`;
   const fallbackFlagUrl = `https://flagcdn.com/w40/${team.countryCode.toLowerCase()}.png`;
 
@@ -42,11 +43,11 @@ const SortableTeam = ({ team, position, totalTeams, onSetPosition }: SortableTea
         {position + 1}
       </span>
       <img
-        src={flagsApiUrl}
+        src={localFlagUrl}
         alt={`${team.name} flag`}
         loading="lazy"
         onError={handleFlagError}
-        className="h-5 w-8 rounded-sm border border-white/20 object-cover"
+        className="h-5 w-8  border border-white/20 object-cover"
       />
       <span className="font-medium text-sm flex-1">{team.name}</span>
 
