@@ -8,8 +8,6 @@ interface SortableTeamProps {
   position: number;
 }
 
-const positionLabels = ["1st", "2nd", "3rd", "4th"];
-
 const SortableTeam = ({ team, position }: SortableTeamProps) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: team.id,
@@ -35,10 +33,16 @@ const SortableTeam = ({ team, position }: SortableTeamProps) => {
       {...attributes}
       {...listeners}
     >
-      <span className={`text-xs font-bold w-8 text-center rounded-md py-1 ${
-        isQualified ? "bg-primary/20 text-primary" : isThird ? "bg-accent/20 text-accent" : "bg-muted text-muted-foreground"
-      }`}>
-        {positionLabels[position]}
+      <span
+        className={`text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full shrink-0 ${
+          isQualified
+            ? "bg-primary/20 text-primary"
+            : isThird
+              ? "bg-accent/20 text-accent"
+              : "bg-muted text-muted-foreground"
+        }`}
+      >
+        {position + 1}
       </span>
       <span className="text-xl">{team.flag}</span>
       <span className="font-medium text-sm flex-1">{team.name}</span>

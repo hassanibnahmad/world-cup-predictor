@@ -4,14 +4,13 @@ interface ExportPreviewProps {
   groups: Group[];
 }
 
-const posLabels = ["1st", "2nd", "3rd", "4th"];
-
 const ExportPreview = ({ groups }: ExportPreviewProps) => (
   <div
     id="export-target"
     className="w-[1080px] min-h-[1920px] p-12 mx-auto"
     style={{
-      background: "linear-gradient(135deg, #0f172a 0%, #1a1a2e 30%, #0f172a 60%, #162032 100%)",
+      background:
+        "radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 26%), radial-gradient(circle at top right, rgba(168, 85, 247, 0.16), transparent 24%), radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.14), transparent 26%), radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.16), transparent 24%), linear-gradient(135deg, #050816 0%, #08101d 35%, #0e1328 70%, #050816 100%)",
       color: "#f1f5f9",
       fontFamily: "Inter, sans-serif",
       position: "absolute",
@@ -19,19 +18,45 @@ const ExportPreview = ({ groups }: ExportPreviewProps) => (
       top: 0,
     }}
   >
-    {/* Title */}
-    <div className="text-center mb-12">
-      <h1
-        className="text-5xl font-black mb-3"
+    <div
+      style={{
+        textAlign: "center",
+        marginBottom: "40px",
+      }}
+    >
+      <div
         style={{
-          background: "linear-gradient(135deg, #0ea5e9, #22c55e, #a855f7)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "14px",
+          padding: "14px 18px",
+          borderRadius: "9999px",
+          border: "1px solid rgba(255,255,255,0.1)",
+          background: "rgba(255,255,255,0.05)",
+          backdropFilter: "blur(18px)",
+          marginBottom: "18px",
         }}
       >
-        My World Cup 2026 Predictions
-      </h1>
-      <p style={{ color: "#94a3b8", fontSize: "18px" }}>FIFA World Cup 2026™</p>
+        <img src="/logo.png" alt="FIFA World Cup 2026" style={{ width: "58px", height: "58px", objectFit: "contain" }} />
+        <div style={{ textAlign: "left" }}>
+          <div style={{ color: "#86efac", fontSize: "11px", letterSpacing: "0.35em", textTransform: "uppercase" }}>
+            FIFA World Cup 2026
+          </div>
+          <div
+            style={{
+              fontSize: "28px",
+              fontWeight: 800,
+              background: "linear-gradient(135deg, #22d3ee, #22c55e, #a855f7)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              lineHeight: 1,
+            }}
+          >
+            World Cup 2026 Predictor
+          </div>
+        </div>
+      </div>
+      <p style={{ color: "#94a3b8", fontSize: "18px" }}>Rank the groups and export a poster-style prediction board.</p>
     </div>
 
     {/* Groups grid */}
@@ -46,10 +71,12 @@ const ExportPreview = ({ groups }: ExportPreviewProps) => (
         <div
           key={group.letter}
           style={{
-            background: "rgba(30, 41, 59, 0.8)",
-            borderRadius: "16px",
+            background: "rgba(255, 255, 255, 0.05)",
+            borderRadius: "24px",
             padding: "20px",
-            border: "1px solid rgba(51, 65, 85, 0.5)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.22)",
+            backdropFilter: "blur(18px)",
           }}
         >
           <h3
@@ -73,7 +100,7 @@ const ExportPreview = ({ groups }: ExportPreviewProps) => (
                 gap: "10px",
                 padding: "10px",
                 marginBottom: "6px",
-                borderRadius: "10px",
+                borderRadius: "14px",
                 background: i < 2 ? "rgba(34, 197, 94, 0.08)" : "rgba(148, 163, 184, 0.05)",
                 borderLeft: i < 2 ? "3px solid #22c55e" : i === 2 ? "3px solid rgba(14, 165, 233, 0.5)" : "3px solid transparent",
               }}
@@ -83,14 +110,17 @@ const ExportPreview = ({ groups }: ExportPreviewProps) => (
                   fontSize: "12px",
                   fontWeight: "700",
                   width: "36px",
+                  height: "36px",
                   textAlign: "center",
-                  padding: "2px 0",
-                  borderRadius: "6px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "9999px",
                   background: i < 2 ? "rgba(34, 197, 94, 0.15)" : "rgba(148, 163, 184, 0.1)",
                   color: i < 2 ? "#22c55e" : "#94a3b8",
                 }}
               >
-                {posLabels[i]}
+                {i + 1}
               </span>
               <span style={{ fontSize: "22px" }}>{team.flag}</span>
               <span style={{ fontSize: "14px", fontWeight: "500" }}>{team.name}</span>

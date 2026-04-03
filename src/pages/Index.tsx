@@ -71,16 +71,21 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen overflow-hidden bg-[#050816] text-white">
       <Header />
 
       {!showGroups ? (
         <HeroSection onStart={() => setShowGroups(true)} />
       ) : (
-        <div className="container mx-auto px-4 py-8">
+        <div className="relative px-4 py-10">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.08),transparent_30%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.08),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(34,197,94,0.08),transparent_30%)]" />
+          <div className="relative mx-auto max-w-7xl">
           {/* Action bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8 animate-fade-in">
-            <h2 className="text-2xl font-bold gradient-text">Your Predictions</h2>
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-[2rem] border border-white/10 bg-white/5 px-5 py-5 shadow-[0_30px_100px_rgba(0,0,0,0.2)] backdrop-blur-xl animate-fade-in">
+            <div>
+              <p className="font-display text-[10px] uppercase tracking-[0.35em] text-emerald-300/80">Tournament board</p>
+              <h2 className="font-display text-2xl font-black text-white md:text-3xl">Your Predictions</h2>
+            </div>
             <div className="flex gap-2">
               <Button variant="outline" size="sm" onClick={handleRandomize} className="gap-2">
                 <Shuffle className="h-4 w-4" /> Randomize
@@ -117,7 +122,7 @@ const Index = () => {
           </div>
 
           {/* Qualification legend */}
-          <div className="mt-8 flex flex-wrap items-center gap-6 justify-center text-sm text-muted-foreground animate-fade-in">
+          <div className="mt-8 flex flex-wrap items-center gap-6 justify-center text-sm text-slate-300 animate-fade-in">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-sm bg-primary" /> Qualified (1st & 2nd)
             </div>
@@ -127,6 +132,7 @@ const Index = () => {
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-sm bg-muted" /> Eliminated (4th)
             </div>
+          </div>
           </div>
         </div>
       )}
