@@ -35,7 +35,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => (
         </div>
 
         <h2 className="font-display text-4xl font-black leading-[0.94] tracking-tight text-white md:text-5xl xl:text-6xl">
-          The FIFA World Cup 2026 </h2><p>introduces a new format with 12 groups of 4 teams.
+          The FIFA World Cup 2026 Predictor</h2><p>predictfwc2026.me introduces a new format with 12 groups of 4 teams.
           Use our interactive predictor tool to create your own group rankings, simulate outcomes,
           and export your predictions as a shareable image.
         </p>
